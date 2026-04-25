@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #222222;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #555555;
+  margin-bottom: 20px;
+}
+
+.authors {
+  font-size: 1.05rem;
+  margin-bottom: 5px;
+}
+
+.affiliations {
+  color: #666666;
+  font-size: 0.95rem;
+}
+
+.buttons {
+  margin-top: 25px;
+}
+
+.button {
+  display: inline-block;
+  margin: 6px;
+  padding: 10px 18px;
+  background: #333333;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.button:hover {
+  background: #555555;
+}
+
+.draft-note {
+  margin-top: 18px;
+  color: #777777;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+section {
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-size: 1.7rem;
+  border-bottom: 2px solid #eeeeee;
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+}
+
+.main-image,
+.section-image {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 15px;
+  background: #eeeeee;
+}
+
+.video-placeholder {
+  background: #eeeeee;
+  border: 2px dashed #bbbbbb;
+  border-radius: 8px;
+  padding: 80px 20px;
+  text-align: center;
+  color: #666666;
+}
+
+pre {
+  background: #f5f5f5;
+  padding: 18px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #777777;
+  font-size: 0.9rem;
+}
