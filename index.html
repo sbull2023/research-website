@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Your Research Project Title</title>
+  <title>Trajectory Fine-Tuning of Local LLMs for Mobile Manipulation</title>
+  <meta name="description"
+        content="Level-aware verdict-conditioned trajectory fine-tuning of open-weight LLMs on a Hello Robot Stretch RE2. Sub-1,000 real robot sessions match frontier models." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -12,102 +19,166 @@
 <body>
   <main class="container">
 
+    <!-- ============================ HERO ============================ -->
     <section class="hero">
-      <h1>Your Research Project Title</h1>
-      <p class="subtitle">A short subtitle explaining your research project</p>
+      <p class="eyebrow">Robotics and Machine Learning Laboratory · Florida Institute of Technology</p>
+
+      <h1>Trajectory Fine&#8209;Tuning of Local Language Models for Mobile&nbsp;Manipulation</h1>
+      <p class="subtitle">Sub-1,000 real robot sessions match frontier models</p>
 
       <p class="authors">
-        Your Name<sup>1</sup>, Coauthor Name<sup>2</sup>, Another Author<sup>1</sup>
+        Samantha Bullard<sup>1</sup> ·
+        Truong Nhut Huynh<sup>1</sup> ·
+        Kim-Doang Nguyen<sup>1</sup>
       </p>
 
       <p class="affiliations">
-        <sup>1</sup>Your University &nbsp;&nbsp;
-        <sup>2</sup>Research Lab or Company
+        <sup>1</sup>Department of Mechanical and Civil Engineering, Florida Institute of Technology
       </p>
 
       <div class="buttons">
-        <a href="#" class="button">Paper</a>
-        <a href="#" class="button">Video</a>
-        <a href="#" class="button">Code</a>
-        <a href="#" class="button">Dataset</a>
+        <a href="#" class="button">📄 Paper</a>
+        <a href="#overview-video" class="button">🎬 Video</a>
+        <a href="#" class="button">💻 Code</a>
+        <a href="#" class="button">📊 Dataset</a>
+        <a href="#citation" class="button button-ghost">BibTeX</a>
       </div>
 
-      <p class="draft-note">
-        Private draft version. Links and content are placeholders.
-      </p>
+      <!-- The signature element: one logged trajectory, rendered as the
+           observe-reason-act strip every video card on this page reuses. -->
+      <div class="hero-trace" aria-label="Example reasoning trajectory">
+        <div class="trace-row">
+          <span class="trace-role">user</span>
+          <span class="trace-text">“Is it safe to move forward 1 meter? If yes, do it.”</span>
+        </div>
+        <div class="trace-row">
+          <span class="trace-role">model</span>
+          <span class="chip chip-tool">get_pointcloud_summary</span>
+        </div>
+        <div class="trace-row">
+          <span class="trace-role">robot</span>
+          <span class="trace-text trace-obs">closest obstacle 2.1 m — path clear</span>
+        </div>
+        <div class="trace-row">
+          <span class="trace-role">model</span>
+          <span class="chip chip-level">&lt;|level:primitive|&gt;</span>
+          <span class="chip">base_forward(1.0)</span>
+          <span class="verdict verdict-success">verified success</span>
+        </div>
+      </div>
+
+      <p class="draft-note">Private draft. Paper, code, and dataset links activate on release.</p>
     </section>
 
+    <!-- ============================ TL;DR ============================ -->
     <section>
-      <img src="assets/main-image.png" alt="Main project image" class="main-image" />
-    </section>
-
-    <section>
-      <h2>What’s New</h2>
-      <ul>
-        <li><strong>[Month Day, Year]</strong> Website draft created.</li>
-        <li><strong>[Month Day, Year]</strong> Paper, code, and dataset links will be added later.</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Abstract</h2>
+      <h2>TL;DR</h2>
       <p>
-        Write a short summary of your research here. Explain the problem,
-        why it matters, what method you used, and what your main findings were.
-        This should usually be one strong paragraph.
+        We fine-tune small open-weight LLMs on <strong>full reasoning trajectories</strong> logged
+        from real deployments of a Hello Robot Stretch RE2 — instruction, tool calls, perception
+        observations, actuator commands, and a monitor-verified outcome — rather than synthetic
+        (instruction,&nbsp;command) pairs. Two learned control variables, a <em>level token</em>
+        (high-level behaviour vs. primitive sequence) and a <em>verdict token</em> (forced to
+        <span class="chip chip-inline">&lt;|verdict:success|&gt;</span> at inference through a logit
+        mask), let a Llama-3.1-8B trained on ~870 real trajectories reach <strong>78.4%</strong>
+        out-of-distribution grounding accuracy — within 4.7 points of a frontier cloud LLM, 16 points
+        above a matched-scale synthetic baseline — at sub-340&nbsp;ms latency, fully on premises.
       </p>
     </section>
 
-    <section>
+    <!-- ======================= OVERVIEW VIDEO ======================= -->
+    <section id="overview-video">
       <h2>Overview Video</h2>
+      <p class="section-lede">
+        Three minutes: the two-tier architecture, the trajectory fine-tuning recipe, and the robot
+        in action across the five task families.
+      </p>
 
-      <div class="video-placeholder">
-        Video placeholder. Add a YouTube embed later when ready.
-      </div>
+      <!-- Drop the file at assets/videos/overview.mp4 (poster optional at
+           assets/videos/overview.jpg), or set data-yt to a YouTube ID. -->
+      <div class="featured-video" id="featured-video"
+           data-src="assets/videos/overview.mp4"
+           data-poster="assets/videos/overview.jpg"
+           data-yt=""></div>
     </section>
 
+    <!-- ===================== ROBOT TRIAL VIDEOS ===================== -->
+    <section id="videos">
+      <h2>Robot Demonstrations</h2>
+      <p class="section-lede">
+        Five real-robot runs, each paired with its terminal log — the observe–reason–act
+        sequence exactly as the system produced it. <span class="chip chip-inline">[OBS]</span>
+        lines are perception observations, <span class="chip chip-inline">[THINK]</span> lines are
+        the model's reasoning, and <span class="chip chip-inline">[ACT]</span> lines are the
+        commands dispatched to the actuators.
+      </p>
+
+      <nav class="filter-bar" id="filter-bar" aria-label="Task family filter">
+        <button class="filter active" data-family="all">All</button>
+        <!-- Family buttons render from the data in gallery.js -->
+      </nav>
+
+      <div id="gallery"><!-- Video cards render from gallery.js --></div>
+    </section>
+
+    <!-- ============================ METHOD ============================ -->
     <section>
       <h2>Approach</h2>
       <p>
-        Describe your method here. Explain how your system, experiment,
-        model, design, or analysis works.
+        The unit of training is the trajectory, not the pair. Each example is one complete
+        observe–reason–act sequence serialised into the exact inference-time prompt format. A
+        <span class="chip chip-inline">&lt;|level:high|&gt;</span> /
+        <span class="chip chip-inline">&lt;|level:primitive|&gt;</span> token before every command
+        list makes the abstraction-level choice a learned, observable variable; a verdict token set
+        to the trajectory's monitor-derived outcome makes success a <em>condition</em> the
+        controller can force at inference. Deployment runs as a two-tier system: a fine-tuned
+        Llama-3.1-8B on the AI-Panther HPC cluster for grounding and multi-turn reasoning, and a
+        fine-tuned Gemma-3-4B on the robot's onboard compute for execution verification and 8&nbsp;Hz
+        visual servoing.
       </p>
-
-      <img src="assets/approach.png" alt="Approach diagram" class="section-image" />
+      <img src="assets/approach.png" alt="System architecture: two-tier LLM control of the Stretch RE2"
+           class="section-image" />
     </section>
 
+    <!-- ============================ RESULTS ============================ -->
     <section>
       <h2>Results</h2>
-      <p>
-        Summarize your important results. You can include figures, tables,
-        charts, screenshots, or diagrams.
-      </p>
-
-      <img src="assets/results.png" alt="Results figure" class="section-image" />
+      <div class="stat-row">
+        <div class="stat"><span class="stat-num">78.4%</span><span class="stat-label">OOD grounding accuracy (vs. 83.1% frontier cloud LLM)</span></div>
+        <div class="stat"><span class="stat-num">+16 pts</span><span class="stat-label">over matched-scale synthetic fine-tuning</span></div>
+        <div class="stat"><span class="stat-num">74.3%</span><span class="stat-label">end-to-end success, 105 on-robot trials</span></div>
+        <div class="stat"><span class="stat-num">&lt;340 ms</span><span class="stat-label">median round-trip latency, on premises</span></div>
+      </div>
+      <img src="assets/results.png" alt="Main results figure" class="section-image" />
     </section>
 
-    <section>
+    <!-- ============================ CITATION ============================ -->
+    <section id="citation">
       <h2>Citation</h2>
-
-      <pre><code>@article{yourname2026project,
-  title={Your Research Project Title},
-  author={Your Name and Coauthor Name},
-  journal={Conference or Journal Name},
-  year={2026}
+      <pre><code>@article{huynh2026trajectory,
+  title   = {Trajectory Fine-Tuning of Local Language Models for Mobile
+             Manipulation: Sub-1,000 Real Robot Sessions Match Frontier Models},
+  author  = {Bullard, Samantha and Huynh, Truong Nhut and Nguyen, Kim-Doang},
+  journal = {Under review},
+  year    = {2026}
 }</code></pre>
     </section>
 
     <section>
       <h2>Acknowledgements</h2>
       <p>
-        Thank your advisor, lab, funding source, classmates, or anyone who helped.
+        Computation was performed on the AI-Panther HPC cluster at Florida Institute of Technology.
+        We thank the members of the Robotics and Machine Learning Laboratory for deployment sessions
+        and trial supervision.
       </p>
     </section>
 
   </main>
 
   <footer>
-    <p>Research website draft. Not intended for public release yet.</p>
+    <p>Robotics and Machine Learning Laboratory · Florida Institute of Technology · 2026</p>
   </footer>
+
+  <script src="gallery.js"></script>
 </body>
 </html>
