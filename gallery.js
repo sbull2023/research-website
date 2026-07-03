@@ -107,7 +107,7 @@ const DEMOS = [
   /* -------------- 2 · Pick & Place: bottle → trash can -------------- */
   {
     family: "pick_place",
-    title: "Water bottle: floor → trash can",
+    title: "Water bottle: table → trash can",
     instruction: "Find the water bottle and put it in the trash can",
     summary: "A search sweep locates the bottle; after the grasp, a second sweep finds the trash can, and the robot releases the bottle over the opening instead of onto a surface.",
     src: "assets/videos/pick_place/bottle_to_trashcan.mp4",
