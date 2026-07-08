@@ -185,24 +185,26 @@ const DEMOS = [
 [OBS]  Bottle secured at carry height, hallway clear ahead
 [THINK] Fountain location recalled from prior map, alcove on right side
        of corridor. Plan path along tile centerline
-[ACT]  Turning right 90 degrees
-[ACT]  Moving forward 2 meters
+[ACT]  Moving forward 1 meter
+[ACT]  Turning right 50 degrees
+[ACT]  Moving forward 1.5 meters
+[ACT]  Turning right 100 degrees
 [OBS]  Hallway alcove visible on left, stainless fixture detected,
        fountain basin identified
 [THINK] Target placement surface reached. Align base with fountain
        front face
-[ACT]  Turning right 20 degrees
-[ACT]  Moving forward 0.1 meters
-[ACT]  Moving forward 0.1 meters
-[ACT]  Moving forward 0.1 meters
+[ACT]  Turning left 40 degrees
+[ACT]  Moving forward 0.2 meters
+[ACT]  Moving forward 0.2 meters
+[ACT]  Moving forward 0.2 meters
 [OBS]  Fountain basin centered at bearing 0 degrees, range 0.4 m,
        basin lip height 0.95 m
-[ACT]  Turning right 90 degrees
+[ACT]  Turning left 90 degrees
 [THINK] Place bottle on basin ledge, upright orientation for stability
 [ACT]  Extending arm to basin ledge
-[ACT]  Lowering bottle to ledge surface
+[ACT]  Raising bottle to ledge surface
 [OBS]  Bottle base contact with ledge confirmed, vertical alignment ok
-[ACT]  Opening gripper
+[ACT]  Rotating and opening gripper
 [OBS]  Bottle released, standing upright on basin ledge, no tipping
 [THINK] Placement stable. Retract arm clear of fixture
 [ACT]  Retracting arm to home configuration
