@@ -149,7 +149,7 @@ const DEMOS = [
 [ACT]  Opening gripper
 [OBS]  Can released, standing on trash can, no tipping
 [THINK]  Placement stable. Retract arm clear of fixture
-[ACT]  Confirmed Pringles can placed at fountain
+[ACT]  Confirmed Pringles can placed at trash can
 `,
   },
 
