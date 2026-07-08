@@ -87,8 +87,6 @@ const DEMOS = [
 [OBS]  Long table detected at bearing -30 degrees, range 1.8 m, surface
        height 0.74 m, clear area for placement
 [THINK] Table identified. Approach front edge for arm extension
-[ACT]  Turning left 20 degrees to align with table edge
-[ACT]  Moving forward 1.2 meters
 [OBS]  Table edge at range 0.4 m, clear placement zone within reach
 [ACT]  Turning right 90 degrees
 [THINK] Place bottle upright on table surface, away from edge
@@ -96,7 +94,6 @@ const DEMOS = [
 [ACT]  Lowering bottle to table
 [OBS]  Bottle base contact with table confirmed, vertical alignment ok
 [ACT]  Opening gripper
-[OBS]  Bottle released, standing upright on table, no tipping
 [THINK] Placement stable. Retract arm clear of table
 [ACT]  Retracting arm to home configuration
 [OBS]  Bottle in place, manipulator clear, task complete
@@ -112,48 +109,47 @@ const DEMOS = [
     summary: "A search sweep locates the bottle; after the grasp, a second sweep finds the trash can, and the robot releases the bottle over the opening instead of onto a surface.",
     src: "assets/videos/pick_place/bottle_to_trashcan.mp4",
     log: `
-[OBS]  No bottle in current field of view, lab furniture ahead
-[THINK] Target not visible from current heading. Initiate sweep to
-        scan for water bottle
-[ACT]  Turning right, scanning for water bottle
-[OBS]  Water bottle detected at bearing +35 degrees, range 1.5 m,
-       conf 0.86
-[THINK] Target acquired. Approach in small increments toward
-        manipulator workspace
-[ACT]  Moving forward 0.4 meters
-[OBS]  Bottle range 1.0 m, centered in frame
-[ACT]  Moving forward 0.3 meters
-[OBS]  Bottle exited field of view below camera horizon
-[THINK] Object within close-range workspace. Tilt head down to
-        reacquire and verify grasp range
-[ACT]  Camera down 25 degrees
-[OBS]  Bottle reacquired, range 0.5 m, within manipulator reach
-       envelope
-[THINK] Align base laterally for side grasp
-[ACT]  Turning left 90 degrees
-[OBS]  Base parallel to target, clear lateral approach path
-[ACT]  Extending arm toward bottle, opening gripper
+[ACT]  Start searching for Pringles can
+[OBS]  Carpeted lab, computers on desk in right, Pringles can detected on desk at bearing +25 degrees, range 1.4 meters
+[THINK]  Target identified. Approach desk to bring can within manipulator workspace
+[OBS]  Can centered at bearing +30 degrees, range 0.6 m, height 0.45 m above floor
+[THINK]  Within reach envelope. Align base parallel to bench for lateral arm extension
+[ACT]  Turning left 20 degrees
+[OBS]  Desk edge parallel to base, can in manipulator workspace, clear top-down approach
+[THINK]  Plan top grasp, fingers around can midsection
+[ACT]  Extending arm, opening gripper
+[ACT]  Raising end-effector to can height
+[OBS]  Gripper aligned with can, contact surfaces clear
 [ACT]  Closing gripper
-[OBS]  Grasp force stable, bottle lifted, no slip detected
-[THINK] Grasp confirmed. Retract to carry pose, then locate the
-        trash can
+[THINK]  Grasp confirmed. Retract arm to travel pose before locomotion
 [ACT]  Retracting arm to carry configuration
-[ACT]  Turning left, scanning for trash can
-[OBS]  Trash can detected at bearing -25 degrees, range 1.6 m, open
-       top visible, rim height 0.6 m
-[THINK] Deposit target identified. Approach rim for release over
-        the opening
-[ACT]  Moving forward 1.1 meters
-[OBS]  Trash can rim at range 0.4 m, opening within reach
+[OBS]  Can secured at carry height, path clear ahead
+[THINK]  Trash can location recalled from prior map, alcove on right side of room. Plan path along tile centerline
+[ACT]  Moving forward 1 meter
 [ACT]  Turning right 90 degrees
-[THINK] Release above the opening rather than a surface placement
-[ACT]  Extending arm over trash can opening
+[ACT]  Turning right 90 degrees
+[THINK]  Need to search for object
+[ACT]  Beginning advanced search for trash can
+[OBS]  Pathway visible on left, brown box detected, trash can identified
+[ACT]  Moving toward trash can in 6, 0.2 meter increments
+[THINK]  Need to reach target surface
+[ACT]  Turning right and moving forward 1 meter
+[THINK]  Must face trash can to approve placement surface
+[ACT]  Turning left 60 degrees
+[OBS]  Trash can centered 2 meters away
+[THINK]  Must approach trash can
+[ACT]  Approaching trash can in 0.2 meter increments
+[THINK]  Trash can reached, need to adjust for placement
+[ACT] Turning left 90 degrees
+[THINK]  Place bottle on trash can ledge
+[ACT]  Extending arm to trash can ledge
+[ACT]  Lowering can to ledge surface
+[ACT]  Rotating gripper for placement
+[THINK]  Rotated wrong direction, rotating in opposite direction
 [ACT]  Opening gripper
-[OBS]  Bottle dropped into trash can, contained, none outside rim
-[THINK] Deposit complete. Retract arm clear of fixture
-[ACT]  Retracting arm to home configuration
-[OBS]  Manipulator clear, task complete
-[ACT]  Confirmed water bottle deposited in trash can
+[OBS]  Can released, standing on trash can, no tipping
+[THINK]  Placement stable. Retract arm clear of fixture
+[ACT]  Confirmed Pringles can placed at fountain
 `,
   },
 
@@ -175,7 +171,7 @@ const DEMOS = [
        above floor
 [THINK] Within reach envelope. Align base parallel to bench for lateral
        arm extension
-[ACT]  Turning right 20 degrees
+[ACT]  Turning left 90 degrees
 [OBS]  Bench edge parallel to base, bottle in manipulator workspace,
        clear top-down approach
 [THINK] Plan top grasp, fingers around bottle midsection
@@ -261,6 +257,7 @@ const DEMOS = [
        detected
 [THINK] Correct heading to center hallway axis
 [ACT]  Turning right 40 degrees
+[ACT]  Moving forward 1 meter
 [OBS]  Hallway centered, far corridor branching left, target region in
        opposite wing
 [THINK] Branch left to reach destination side
