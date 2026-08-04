@@ -43,7 +43,7 @@ const DEMOS = [
     title: "Water bottle: office chair → table",
     instruction: "Pick up the water bottle and place it on the table",
     summary: "In the lab. A left sweep finds the bottle on a chair seat; the robot closes in, reacquires it below the camera horizon, grasps from the side, then scans for a table and sets it down upright.",
-    src: "assets/videos/pick_place/chair_to_table.mp4",
+    yt: "4RFIgfio0UY",
     log: `
 [OBS]  Wall ahead at range 3.2 m, no target in current field of view
 [THINK] Bottle not visible from current heading. Initiate left sweep
@@ -107,7 +107,7 @@ const DEMOS = [
     title: "Water bottle: table → trash can",
     instruction: "Find the water bottle and put it in the trash can",
     summary: "A search sweep locates the bottle; after the grasp, a second sweep finds the trash can, and the robot releases the bottle over the opening instead of onto a surface.",
-    src: "assets/videos/pick_place/bottle_to_trashcan.mp4",
+    yt: "5PTaTbmMago",
     log: `
 [ACT]  Start searching for Pringles can
 [OBS]  Carpeted lab, computers on desk in right, Pringles can detected on desk at bearing +25 degrees, range 1.4 meters
@@ -159,7 +159,7 @@ const DEMOS = [
     title: "Water bottle: hallway bench → water fountain",
     instruction: "Pick up the water bottle and place it on the water fountain",
     summary: "In the hallway. The bottle sits on a red bench; after a top grasp the robot recalls the fountain alcove from its map, drives down the corridor, and sets the bottle on the basin ledge.",
-    src: "assets/videos/pick_place/bench_to_fountain.mp4",
+    yt: "ifW4pTQ4M_Q",
     log: `
 [ACT]  Start searching for water bottle
 [OBS]  Tiled hallway, red benches on right, water bottle detected on
@@ -219,7 +219,7 @@ const DEMOS = [
     title: "Traversal to the far side of the study room",
     instruction: "Go to the other side of the study room",
     summary: "A long-horizon route: through the entry corridor, across the glass-walled room over a wood-to-carpet transition, out a narrow passage between partitions, and down two corridor branches to the destination wing.",
-    src: "assets/videos/navigation/study_room_traversal.mp4",
+    yt: "33pJ_pZQ-EU",
     log: `
 [OBS]  Wood floor under base, glass-walled study room ahead, tables and
        chairs visible through partition
@@ -285,7 +285,7 @@ const DEMOS = [
     title: "Find the backpack outside the lab",
     instruction: "Please find my backpack. It's outside of the lab",
     summary: "The target is beyond the current room. The robot reasons that transit spaces have a higher prior for personal items, exits through the doorway, detects the backpack in the hallway, and closes in for visual confirmation.",
-    src: "assets/videos/search/find_backpack.mp4",
+    yt: "E6kT0mvGDIY",
     log: `
 [OBS]  Scene: bookshelf and no backpack in current field of view
 [THINK] Target absent in current frame. Door on right opens to hallway,
@@ -406,17 +406,6 @@ function cardFor(item) {
   return card;
 }
 
-function renderFeatured() {
-  const slot = document.getElementById("featured-video");
-  if (!slot) return;
-  slot.appendChild(mediaFor({
-    src: slot.dataset.src,
-    poster: slot.dataset.poster,
-    yt: slot.dataset.yt || "",
-    title: "Overview video",
-  }));
-}
-
 function renderGallery() {
   const gallery = document.getElementById("gallery");
   const bar = document.getElementById("filter-bar");
@@ -444,5 +433,4 @@ function renderGallery() {
   });
 }
 
-renderFeatured();
 renderGallery();
